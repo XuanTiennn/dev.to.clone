@@ -12,7 +12,7 @@ const PostSchema = new Schema(
     content: { type: String, require: true },
     likes: [{ type: mongoose.Types.ObjectId, ref: "user" }],
     bookmarks: [{ type: mongoose.Types.ObjectId, ref: "user" }],
-    comments:[{type:mongoose.Types.ObjectId}]
+    // comments:[{type:mongoose.Types.ObjectId}]
   },
   {
     timestamps: true,

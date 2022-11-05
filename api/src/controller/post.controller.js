@@ -1,3 +1,4 @@
+const commentSchema = require("../schema/comment.schema");
 const postSchema = require("../schema/post.schema");
 const postController = {
   create: async (req, res) => {
@@ -8,9 +9,7 @@ const postController = {
     const post = await postSchema
       .findById(req.params.id)
       .populate("author")
-      .populate("tags")
-      .populate("comment");
-
+      .populate("tags");
     return res.status(200).json(post);
   },
   getPosts: async (req, res) => {
@@ -19,8 +18,8 @@ const postController = {
       .skip(req.query.page * req.query.pageSize)
       .limit(req.query.pageSize)
       .populate("author")
-      .populate("tags")
-      .populate("comment");
+      .populate("tags");
+    // .populate("comment");
 
     return res.status(200).json(posts);
   },
@@ -28,8 +27,8 @@ const postController = {
     const post = await postSchema
       .findById(req.body.id)
       .populate("author")
-      .populate("tags")
-      .populate("comment");
+      .populate("tags");
+    // .populate("comment");
 
     if (!post) {
       return res
