@@ -7,13 +7,16 @@ const postRoute = require("./src/routes/post.route");
 const tagRoute = require("./src/routes/tag.route");
 const commentRoute = require("./src/routes/comment.route");
 const userRoute = require("./src/routes/user.route");
+const { urlencoded } = require("express");
 const app = express();
 
 const port = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(cookieParser());
+app.use(urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
+
 app.use("/api", postRoute);
 app.use("/api", tagRoute);
 app.use("/api", commentRoute);
