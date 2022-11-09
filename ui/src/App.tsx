@@ -1,24 +1,16 @@
-import React from "react";
-import logo from "./logo.svg";
+// import { Route, Switch } from "react-router-dom";
+import Routes from "./routes/routes";
 import "./style.scss";
+const RRD=require('react-router-dom');
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p className="text-3xl font-bold underline">abc</p>
-        <p className="text-3xl font-bold underline">
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RRD.Switch>
+        {Routes.map((element) => (
+          <RRD.Route path={element.path}>{element.component}</RRD.Route>
+        ))}
+      </RRD.Switch>
     </div>
   );
 }
