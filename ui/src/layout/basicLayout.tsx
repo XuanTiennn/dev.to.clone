@@ -4,7 +4,7 @@ import { Header } from "../components/header/header";
 import { Listing } from "../components/listing/listing";
 import { Post } from "../components/post/post";
 
-export function App({
+export default function BasicLayout({
   topContent = <Header />,
   leftContent = <Categories />,
   rightContent = <Listing />,
@@ -14,9 +14,11 @@ export function App({
   return (
     <div>
       <div>{topContent}</div>
-      <div>{leftContent}</div>
-      <div>{centerContent}</div>
-      <div>{rightContent}</div>
+      <div className="grid grid-cols-custom-grid gap-3">
+        <div>{leftContent}</div>
+        <div>{centerContent}</div>
+        <div>{rightContent}</div>
+      </div>
     </div>
   );
 }

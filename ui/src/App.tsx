@@ -1,16 +1,27 @@
-// import { Route, Switch } from "react-router-dom";
-import Routes from "./routes/routes";
+import { Routes, Route } from "react-router-dom";
+import routes from "./routes/routes";
 import "./style.scss";
-const RRD=require('react-router-dom');
 
 function App() {
   return (
-    <div className="App">
-      <RRD.Switch>
-        {Routes.map((element) => (
-          <RRD.Route path={element.path}>{element.component}</RRD.Route>
-        ))}
-      </RRD.Switch>
+    <div className="App container">
+      <Routes>
+        {routes.map((element) => {
+          const { layout, component } = element;
+          const Layout = layout;
+          const Component = component;
+
+          return (
+            <Route
+              path={element.path}
+              element={<Layout centerContent={<Component />} />}
+            />
+          );
+        })}
+      </Routes>
+      {/* <Routes>
+        <Route path="/" element={<Posts />}></Route>
+      </Routes> */}
     </div>
   );
 }

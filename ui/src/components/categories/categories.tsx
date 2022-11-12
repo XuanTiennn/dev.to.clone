@@ -1,12 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
-export interface ICategoriesProps {
-}
+export interface ICategoriesProps {}
 
-export function Categories (props: ICategoriesProps) {
-  return (
-    <div>
-      categories
-    </div>
-  );
+export function Categories(props: ICategoriesProps) {
+  return <div className="">categories</div>;
 }

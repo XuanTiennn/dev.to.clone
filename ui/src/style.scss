@@ -16,7 +16,9 @@ $themes: (
     border: #444,
   ),
 );
-
+#root{
+  background-color: #f5f5f5;
+}
 @mixin themify($themes) {
   @each $theme, $map in $themes {
     .theme-#{$theme} & {
