@@ -6,13 +6,14 @@ function App() {
   return (
     <div className="App container">
       <Routes>
-        {routes.map((element) => {
+        {routes.map((element, index) => {
           const { layout, component } = element;
           const Layout = layout;
           const Component = component;
 
           return (
             <Route
+              key={index}
               path={element.path}
               element={<Layout centerContent={<Component />} />}
             />
