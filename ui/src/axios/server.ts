@@ -2,6 +2,14 @@ import { axiosClient } from "./axiosClient";
 // cons= process.enAPI || 'http://localhost:5000/api';
 // console.lo;
 const server = {
+  upload: {
+    upload: (payload: Object) => {
+      return axiosClient.post(`/upload`, payload);
+    },
+    destroy: (payload: Object) => {
+      return axiosClient.post(`/destroy`, payload);
+    },
+  },
   posts: {
     get: (page: number, pageSize: number) => {
       return axiosClient.post(

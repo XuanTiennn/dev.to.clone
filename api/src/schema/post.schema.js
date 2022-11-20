@@ -6,7 +6,6 @@ const PostSchema = new Schema(
     title: { type: String, require: true },
     image: { url: { type: String }, publicId: { type: String } },
     author: { type: mongoose.Types.ObjectId, ref: "user" },
-    createAt: { type: Date, default: Date.now() },
     slug: { type: String, require: true },
     tags: [{ type: mongoose.Types.ObjectId,  ref: "tag" }],
     content: { type: String, require: true },

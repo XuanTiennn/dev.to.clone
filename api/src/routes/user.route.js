@@ -11,6 +11,6 @@ router.route("/logout").post(logoutController.logout);
 
 router.route("/user/register").post(userController.create);
 router.route("/user/:id").post(userController.get);
-router.route("/user/list").post(userController.getUsers);
+router.route("/users").post(userController.getUsers);
 
 module.exports = router;

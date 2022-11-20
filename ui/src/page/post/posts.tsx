@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import server from "../../axios/server";
 import FilterTop from "../../components/post/filter";
 import { Post } from "../../components/post/post";
@@ -7,17 +7,34 @@ import { TagDTO } from "./../../interface/tag.interface";
 export interface IPostsProps {}
 
 export default function Posts(props: IPostsProps) {
-  const [params, setParams] = useState({ page: 0, pageSize: 20 });
   const [posts, setPosts] = useState<Array<Object>>([]);
+  let page = 0;
+  const refMounted = useRef<any>(null);
   useEffect(() => {
-    getPosts(params);
-  }, [params]);
-  const getPosts = (params: object) => {
-    server.posts.get(0, 20).then((res: any) => {
-      setPosts(res.data);
+    if (refMounted.current) {
+      getPosts(page);
+    } else {
+      refMounted.current = true;
+    }
+  }, []);
+  const getPosts = (page: number) => {
+    server.posts.get(page, 20).then((res: any) => {
+      setPosts((prev) => [...prev, ...res.data]);
     });
   };
-  console.log(posts);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+  const handleScroll = (e: any) => {
+    if (
+      window.innerHeight + e.target.documentElement.scrollTop + 1 >=
+      e.target.documentElement.scrollHeight
+    ) {
+      page += 1;
+      getPosts(page);
+    }
+  };
+
   return (
     <div>
       <FilterTop />

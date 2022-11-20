@@ -1,13 +1,10 @@
-import * as React from "react";
-import { Categories } from "../components/categories/categories";
 import { Header } from "../components/header/header";
-import { Listing } from "../components/listing/listing";
 import Posts from "../page/post/posts";
 
-export default function BasicLayout({
+export default function AccountLayout({
   topContent = <Header />,
-  leftContent = <Categories />,
-  rightContent = <Listing />,
+  leftContent = null,
+  rightContent = null,
   centerContent = <Posts />,
   ...props
 }: any) {

@@ -1,7 +1,9 @@
 const commentSchema = require("../schema/comment.schema");
+const removeAccents = require("./../util/removeAccent");
 const postSchema = require("../schema/post.schema");
 const postController = {
   create: async (req, res) => {
+    req.body.slug = removeAccents(req.body.title);
     const newPost = await postSchema.create(req.body);
     return res.status(200).json(newPost);
   },
@@ -22,14 +24,16 @@ const postController = {
     // .populate("comment");
 
     return res.status(200).json(posts);
+    // return res.status(200).json({ total: posts.length, data: posts });
   },
   update: async (req, res) => {
+    req.body.slug = removeAccents(req.body.title);
     const post = await postSchema
-      .findById(req.body.id)
+      .findById(req.params.id)
       .populate("author")
       .populate("tags");
     // .populate("comment");
-
+    console.log(post);
     if (!post) {
       return res
         .status(403)

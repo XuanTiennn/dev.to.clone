@@ -7,6 +7,7 @@ const postRoute = require("./src/routes/post.route");
 const tagRoute = require("./src/routes/tag.route");
 const commentRoute = require("./src/routes/comment.route");
 const userRoute = require("./src/routes/user.route");
+const uploadRoute = require("./src/routes/upload.route");
 const { urlencoded } = require("express");
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/api", postRoute);
 app.use("/api", tagRoute);
 app.use("/api", commentRoute);
 app.use("/api", userRoute);
+app.use("/api", uploadRoute);
 
 connect.connect();
 

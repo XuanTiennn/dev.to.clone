@@ -2,11 +2,6 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    fontSize: {
-      xs: ["13px", "20px"],
-      xl: ["30px"],
-      text14:["14px"]
-    },
     extend: {
       gridTemplateColumns: {
         "custom-grid": "240px 2fr 1fr",
@@ -14,11 +9,14 @@ module.exports = {
       colors: {
         "f5-main": "#f5f5f5",
         "color-main": "#74B1F4",
+        "gray-main": "rgba(0, 0, 0, 0.035)",
+        "purple-custom": "#EBECFC",
       },
       container: {
         center: true,
       },
       screens: {
+        "xs": "320px",
         sm: "640px",
         // => @media (min-width: 640px) { ... }
 
