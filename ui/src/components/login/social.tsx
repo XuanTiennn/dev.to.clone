@@ -2,11 +2,14 @@ import * as React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { TfiTwitterAlt } from "react-icons/tfi";
 import { FaGithub } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 export interface ICreateAccountProps {}
 
-export function Social(props: ICreateAccountProps) {
+export function Social(props: any) {
+  const { children, login } = props;
+  const history = useNavigate();
   return (
-    <div className="p-8 bg-white flex flex-col items-center justify-center">
+    <div className="sm:p-8 bg-white flex flex-col items-center justify-center">
       <h2>Welcome to DEV Community 👩‍💻👨‍💻</h2>
       <p>DEV Community 👩‍💻👨‍💻 is a community of 960,002 amazing developers</p>
       <div className="flex flex-col w-full mt-4">
@@ -22,7 +25,15 @@ export function Social(props: ICreateAccountProps) {
           <span className="ml-2">Sign up with Github</span>
         </button>
       </div>
-      <legend>Already have an account? Log in.</legend>
+      {children}
+      {!login && (
+        <legend>
+          Already have an account?{" "}
+          <button className="text-indigo-500" onClick={() => history("/login")}>
+            Log in.
+          </button>
+        </legend>
+      )}
     </div>
   );
 }

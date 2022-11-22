@@ -8,6 +8,8 @@ export interface IPostsProps {}
 
 export default function Posts(props: IPostsProps) {
   const [posts, setPosts] = useState<Array<Object>>([]);
+  const [tabSelected, setTabSelected] = useState(0);
+
   let page = 0;
   const refMounted = useRef<any>(null);
   useEffect(() => {
@@ -37,7 +39,7 @@ export default function Posts(props: IPostsProps) {
 
   return (
     <div>
-      <FilterTop />
+      <FilterTop tabSelected={tabSelected} setTabSelected={setTabSelected} />
       {posts?.length > 0 &&
         posts?.map((post: any) => (
           <Post

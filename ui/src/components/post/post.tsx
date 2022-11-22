@@ -57,9 +57,9 @@ export function Post({
                 <span className="mx-2 text-text14">Add Comment</span>
               </div>
             </div>
-            <div className="flex items-center cursor-pointer rounded p-1">
+            <div className="flex items-center rounded p-1">
               <span className="mr-2">6 min read</span>
-              <button className="hover:bg-purple-custom p-2 rounded">
+              <button className="hover:bg-purple-custom cursor-pointer p-2 rounded">
                 <BsBookmark />
               </button>
             </div>

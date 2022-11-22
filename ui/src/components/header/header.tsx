@@ -4,14 +4,16 @@ import { useNavigate } from "react-router-dom";
 export interface IHeaderProps {}
 
 export function Header(props: IHeaderProps) {
-  const history=useNavigate()
+  const history = useNavigate();
   return (
-    <div className="header flex justify-between items-center p-2">
+    <div className="header bg-white flex justify-between items-center p-2">
       <div className="header_left flex items-center">
-        <img
-          className="w-10"
-          src="https://res.cloudinary.com/duxzkjxo5/image/upload/v1668239915/dev.to/resized_logo_UQww2soKuUsjaOGNB38o_v7nn3l.png"
-        />
+        <a href="/">
+          <img
+            className="w-10"
+            src="https://res.cloudinary.com/duxzkjxo5/image/upload/v1668239915/dev.to/resized_logo_UQww2soKuUsjaOGNB38o_v7nn3l.png"
+          />
+        </a>
         <div className="w-72 flex items-center relative">
           <input
             placeholder="Search..."
@@ -21,10 +23,13 @@ export function Header(props: IHeaderProps) {
         </div>
       </div>
       <div className="header_right">
-        <button className="mr-4 hover:bg-indigo-300 hover:text-indigo-500 p-2 rounded">
+        <button  onClick={() => history("/login")} className="mr-4 hover:bg-indigo-300 hover:text-indigo-500 p-2 rounded">
           Login
         </button>
-        <button onClick={()=>history('create')} className="border font-medium p-1 border-cyan-500 rounded text-cyan-500	">
+        <button
+          onClick={() => history("/create")}
+          className="xs:text-xs sm:text-base border font-medium p-1 border-cyan-500 rounded text-cyan-500	"
+        >
           Create account
         </button>
       </div>
