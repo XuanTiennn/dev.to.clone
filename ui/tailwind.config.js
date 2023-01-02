@@ -11,6 +11,7 @@ module.exports = {
         "color-main": "#74B1F4",
         "gray-main": "rgba(0, 0, 0, 0.035)",
         "purple-custom": "#EBECFC",
+        "purple-lighting": "#E2E3F3",
       },
       container: {
         center: true,
