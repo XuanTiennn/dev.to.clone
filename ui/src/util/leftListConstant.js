@@ -22,7 +22,7 @@ const LeftConstant = {
     { icon: <FcLock />, name: "Forem Shop" },
     { icon: <BsHeartFill className="text-red-500" />, name: "Sponsors" },
     { icon: <FcElectroDevices />, name: "About" },
-    { icon: <FcContacts />, name: "Contact" },
+    { icon: <FcContacts />, name: "Contact" ,to:'/contact' },
     { icon: <FiBookOpen className="text-yellow-500" />, name: "Guides" },
     { icon: "😒", name: "Software comparisons" },
   ],

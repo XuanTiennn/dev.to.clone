@@ -1,4 +1,5 @@
 import { axiosClient } from "./axiosClient";
+import { ISignUpProps } from './../components/login/signUp';
 // cons= process.enAPI || 'http://localhost:5000/api';
 // console.lo;
 const server = {
@@ -26,7 +27,7 @@ const server = {
     },
   },
   user: {
-    register: (payload: object) => {
+    register: (payload: object | ISignUpProps | undefined) => {
       return axiosClient.post(`/user/register`, payload);
     },
     login: (payload: object) => {
