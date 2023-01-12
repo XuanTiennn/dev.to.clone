@@ -6,6 +6,7 @@
 
 import Login from "../components/login/login";
 import SignUp from "../components/login/signUp";
+import PostDetail from "../components/post/postDetail";
 import Posts from "../page/post/posts";
 
 // const SignUp = lazy(() => import("../components/login/signUp"));
@@ -15,6 +16,7 @@ const routes = [
   { path: "/", component: Posts, layout: BasicLayout },
   { path: "/create", component: SignUp, layout: AccountLayout },
   { path: "/login", component: Login, layout: AccountLayout },
+  // { path: "/:slug", component: PostDetail, layout: BasicLayout },
 ];
 
 export default routes;

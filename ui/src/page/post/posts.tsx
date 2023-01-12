@@ -1,9 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import server from "../../axios/server";
 import FilterTop from "../../components/post/filter";
 import { Post } from "../../components/post/post";
-import { TagDTO } from "./../../interface/tag.interface";
-
+// import { useQuery } from "@tanstack/react-query";
 export interface IPostsProps {}
 
 export default function Posts(props: IPostsProps) {
@@ -19,6 +18,11 @@ export default function Posts(props: IPostsProps) {
       refMounted.current = true;
     }
   }, []);
+  // const { data, isLoading } = useQuery({
+  //   queryKey: ["posts", 0],
+  //   queryFn: () => server.posts.get(0, 20),
+  // });
+  // console.log({data,isLoading});
   const getPosts = (page: number) => {
     server.posts.get(page, 20).then((res: any) => {
       setPosts((prev) => [...prev, ...res.data]);
@@ -49,6 +53,7 @@ export default function Posts(props: IPostsProps) {
             createdAt={post.createdAt}
             authorImg={post.author?.image?.url || undefined}
             authorName={post.author?.fullName || undefined}
+            slug={post.slug}
           />
         ))}
     </div>

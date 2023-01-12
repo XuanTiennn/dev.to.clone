@@ -19,6 +19,9 @@ const server = {
     create: (payload: object) => {
       return axiosClient.post(`/post/`, payload);
     },
+    getById:(id:string)=>{
+      return axiosClient.get(`/post/${id}`);
+    }
   },
   tag: {
     create: (payload: object) => {

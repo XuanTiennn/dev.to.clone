@@ -2,6 +2,7 @@ import { BsBookmark } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa";
 import { RiHeart2Line } from "react-icons/ri";
 import PostDTO from "./../../interface/post.interface";
+import { useNavigate } from "react-router-dom";
 
 export function Post({
   title,
@@ -10,7 +11,9 @@ export function Post({
   likes,
   authorImg,
   authorName,
+  slug,
 }: PostDTO) {
+  const history = useNavigate();
   return (
     <div className="bg-white rounded p-4 mb-3">
       <div className="flex">
@@ -34,7 +37,12 @@ export function Post({
         </div>
       </div>
       <div className="p-4">
-        <h4 className="xs:text-xl md:text-2xl  font-semibold">{title}</h4>
+        <h4
+          className="xs:text-xl md:text-2xl  font-semibold cursor-pointer"
+          onClick={() => history(`/${slug}`)}
+        >
+          {title}
+        </h4>
         <div>
           {tags.map((tag: any) => (
             <span

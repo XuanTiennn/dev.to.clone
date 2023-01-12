@@ -6,5 +6,18 @@ interface PostDTO {
   author?: Object;
   authorImg?: String;
   authorName?: String;
+  slug?: string;
 }
 export default PostDTO;
+
+export type PostDTOS = Pick<
+  PostDTO,
+  | "title"
+  | "createdAt"
+  | "tags"
+  | "likes"
+  | "author"
+  | "authorImg"
+  | "authorName"
+  | "slug"
+>;
