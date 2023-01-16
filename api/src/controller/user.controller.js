@@ -31,7 +31,6 @@ const userController = {
       await UserSchema.create({ ...req.body, passWord: hashPassword });
       return res.status(200).json({ msg: "Tạo mới thành công" });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({ msg: error });
     }
   },
