@@ -1,8 +1,14 @@
 import * as React from "react";
+import { useQuery } from '@tanstack/react-query';
 
 export interface IAppProps {}
 
 export default function Contact(props: IAppProps) {
+const a=  useQuery({
+    queryKey: ["posts"],
+    // queryFn: () => getPosts(page),
+  });
+  console.log(a);
   return (
     <div className="p-8 rounded-md" style={{ border: "1px solid #ccc" }}>
       <h1 className="ml-4 text-4xl font-bold">Contacts</h1>

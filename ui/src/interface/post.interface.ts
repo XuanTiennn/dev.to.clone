@@ -9,15 +9,4 @@ interface PostDTO {
   slug?: string;
 }
 export default PostDTO;
-
-export type PostDTOS = Pick<
-  PostDTO,
-  | "title"
-  | "createdAt"
-  | "tags"
-  | "likes"
-  | "author"
-  | "authorImg"
-  | "authorName"
-  | "slug"
->;
+export type PostDTOS = Pick<PostDTO, keyof PostDTO>;
