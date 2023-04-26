@@ -3,12 +3,16 @@ import server from "../../axios/server";
 import FilterTop from "../../components/post/filter";
 import { Post } from "../../components/post/post";
 import { useQuery } from "@tanstack/react-query";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 export interface IPostsProps {}
 
 export default function Posts(props: IPostsProps) {
   const [posts, setPosts] = useState<Array<Object>>([]);
   const [tabSelected, setTabSelected] = useState(0);
   const [page, setPage] = useState<number>(0);
+  const post = useAppSelector((state) => state.post.value);
+  const dispatch = useAppDispatch();
+  console.log(post);
   // let page = 0;
   const refMounted = useRef<any>(null);
   // useEffect(() => {
