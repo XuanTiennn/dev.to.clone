@@ -18,7 +18,7 @@ const routes = [
   { path: "/", component: Posts, layout: BasicLayout },
   { path: "/create", component: SignUp, layout: AccountLayout },
   { path: "/login", component: Login, layout: AccountLayout },
-  // { path: "/:slug", component: PostDetail, layout: BasicLayout },
+  { path: "/:slug", component: PostDetail, layout: BasicLayout },
   { path: "/contact", component: Contact, layout: NoLayout },
 ];
 

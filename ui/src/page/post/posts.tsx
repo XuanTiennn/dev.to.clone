@@ -4,15 +4,15 @@ import FilterTop from "../../components/post/filter";
 import { Post } from "../../components/post/post";
 import { useQuery } from "@tanstack/react-query";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { setPosts } from "./postSlice";
 export interface IPostsProps {}
 
 export default function Posts(props: IPostsProps) {
-  const [posts, setPosts] = useState<Array<Object>>([]);
+  // const [posts, setPosts] = useState<Array<Object>>([]);
   const [tabSelected, setTabSelected] = useState(0);
   const [page, setPage] = useState<number>(0);
-  const post = useAppSelector((state) => state.post.value);
+  const post = useAppSelector((state) => state.posts);
   const dispatch = useAppDispatch();
-  console.log(post);
   // let page = 0;
   const refMounted = useRef<any>(null);
   // useEffect(() => {
@@ -27,11 +27,11 @@ export default function Posts(props: IPostsProps) {
     queryFn: () => getPosts(page),
     staleTime: 5 * 60 * 1000,
   });
-  console.log({ posts });
-  const getPosts = (page: number) => {
-    server.posts.get(page, 20).then((res: any) => {
-      setPosts((prev) => [...prev, ...res.data]);
-    });
+  // console.log({ posts });
+  const getPosts = async (page: number) => {
+    const _posts = await server.posts.get(page, 20);
+    // setPosts((prev) => [...prev, ..._posts.data]);
+    dispatch(setPosts(_posts.data));
   };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -50,8 +50,8 @@ export default function Posts(props: IPostsProps) {
   return (
     <div>
       <FilterTop tabSelected={tabSelected} setTabSelected={setTabSelected} />
-      {posts?.length > 0 &&
-        posts?.map((post: any) => (
+      {post?.posts?.length > 0 &&
+        post?.posts?.map((post: any, index) => (
           <Post
             likes={post.likes?.length}
             title={post.title}
@@ -60,6 +60,8 @@ export default function Posts(props: IPostsProps) {
             authorImg={post.author?.image?.url || undefined}
             authorName={post.author?.fullName || undefined}
             slug={post.slug}
+            post={post}
+            key={index}
           />
         ))}
     </div>

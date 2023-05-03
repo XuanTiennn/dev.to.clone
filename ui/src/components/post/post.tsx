@@ -3,7 +3,12 @@ import { FaRegComment } from "react-icons/fa";
 import { RiHeart2Line } from "react-icons/ri";
 import PostDTO from "./../../interface/post.interface";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/store";
+import { setPost } from "../../page/post/postSlice";
 
+interface IPostDTO extends PostDTO {
+  post: object;
+}
 export function Post({
   title,
   createdAt,
@@ -12,8 +17,10 @@ export function Post({
   authorImg,
   authorName,
   slug,
-}: PostDTO) {
+  post,
+}: IPostDTO) {
   const history = useNavigate();
+  const dispatch = useAppDispatch();
   return (
     <div className="bg-white rounded p-4 mb-3">
       <div className="flex">
@@ -39,7 +46,10 @@ export function Post({
       <div className="p-4">
         <h4
           className="xs:text-xl md:text-2xl  font-semibold cursor-pointer"
-          onClick={() => history(`/${slug}`)}
+          onClick={() => {
+            history(`/${slug}`);
+            dispatch(setPost(post));
+          }}
         >
           {title}
         </h4>

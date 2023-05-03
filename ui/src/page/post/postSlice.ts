@@ -1,29 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
+import PostDTO, { defaultPost } from "../../interface/post.interface";
 import { RootState } from "../../redux/reducers";
 
 interface PostState {
-  value: number;
+  posts: Array<object>;
+  post: PostDTO;
 }
 
 const initialState: PostState = {
-  value: 0,
+  posts: [],
+  post: defaultPost,
 };
-
 export const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    setPosts: (state, action) => {
+      state.posts.push(...action.payload);
     },
-    decrement: (state) => {
-      state.value -= 1;
+    setPost: (state, action) => {
+      state.post = action.payload;
     },
   },
 });
 
-export const { increment, decrement } = postSlice.actions;
+export const { setPost, setPosts } = postSlice.actions;
 
-export const selectPost = (state: RootState) => state.post;
+export const selectPost = (state: RootState) => state;
 
 export default postSlice.reducer;
